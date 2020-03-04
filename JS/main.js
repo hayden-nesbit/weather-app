@@ -29,7 +29,6 @@ function getAPI() {
             document.getElementById("pic").setAttribute("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
 
         });
-
 }
 
 let view = 0;
@@ -45,7 +44,6 @@ function change() {
         case 2:
             document.getElementById("temp").innerHTML = Math.floor(far) + " F";
             break;
-
     }
 }
 
