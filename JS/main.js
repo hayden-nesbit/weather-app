@@ -11,21 +11,15 @@ function getAPI() {
             if (!response.ok) {
                 throw response
             }
-            let result = response.json();
-            return result;
+            return response.json();
         })
         .then((data) => {
 
-            // if (data.hasOwnProperty('cod')) {
-            //     alert(data.message)
-
-            // } else {
             document.getElementById("main wrapper").style.display = "block";
             document.getElementById("city").innerHTML = data.name;
             document.getElementById("condition").innerHTML = data.weather[0].main;
             document.getElementById("pic").setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
             document.getElementById("temp").innerHTML = Math.floor(data.main.temp) + " K";
-           
 
             kelvin = data.main.temp;
             let far = (kelvin - 273.15) * (9 / 5) + 32;
@@ -39,8 +33,6 @@ function getAPI() {
                 errMessage = JSON.parse(errMessage)
                 alert(errMessage.message)
             })
-
-
 
         })
 }
