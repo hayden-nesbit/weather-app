@@ -21,11 +21,12 @@ function getAPI() {
             let celcius = (far - 32) * (5 / 9);
             let city = data.name;
             let condition = data.weather[0].main;
-            //let image = data.
+            let image = data.weather[0].icon;
 
             document.getElementById("city").innerHTML = city;
             document.getElementById("condition").innerHTML = condition;
             document.getElementById("temp").innerHTML = Math.floor(temp) + " K";
+            document.getElementById("season").innerHTML = "";
 
         });
 
