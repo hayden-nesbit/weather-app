@@ -30,8 +30,6 @@ function getAPI() {
 
         });
 
-
-    catch()
 }
 
 let view = 0;
