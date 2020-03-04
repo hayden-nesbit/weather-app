@@ -8,12 +8,14 @@ function getAPI() {
         })
 
         .then((data) => {
+            console.log(data)
             let temp = data.main.temp;
             let city = data.name;
-            let condition = data.
-            let image = data.
-            document.getElementById("temp").innerHTML = temp;
+            let condition = data.weather[0].main;
+            //let image = data.
+            document.getElementById("temp").innerHTML = Math.floor(temp);
             document.getElementById("city").innerHTML = city;
+            document.getElementById("condition").innerHTML = condition;
         
         });
 
