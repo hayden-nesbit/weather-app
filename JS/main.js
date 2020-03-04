@@ -1,6 +1,7 @@
 let zip = document.getElementById("inputZip");
 
 document.getElementById("main wrapper").style.display = "none";
+document.getElementById("alert").style.display = "none";
 
 let kelvin = 0;
 
@@ -11,10 +12,16 @@ function getAPI() {
             if (!response.ok) {
                 throw response
             }
-            return response.json();
+            let result = response.json();
+            return result;
         })
         .then((data) => {
 
+            // if (data.hasOwnProperty('cod')) {
+            //     alert(data.message)
+
+            // } else {
+            document.getElementById("alert").style.display = "none";
             document.getElementById("main wrapper").style.display = "block";
             document.getElementById("city").innerHTML = data.name;
             document.getElementById("condition").innerHTML = data.weather[0].main;
@@ -31,8 +38,12 @@ function getAPI() {
             console.log(error)
             error.text().then(errMessage => {
                 errMessage = JSON.parse(errMessage)
-                alert(errMessage.message)
+
+                document.getElementById("main wrapper").style.display = "none";
+                document.getElementById("alert").style.display = "block";
+                document.getElementById("alert").innerHTML = "ERROR: " + errMessage.message;
             })
+
 
         })
 }
