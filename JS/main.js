@@ -39,8 +39,6 @@ function getAPI() {
                 document.getElementById("pop").style.display = "block";
                 document.getElementById("pop").innerHTML = "Uh-oh! " + errMessage.message;
             })
-
-
         })
 }
 
