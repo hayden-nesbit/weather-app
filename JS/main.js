@@ -28,12 +28,10 @@ function getAPI() {
             document.getElementById("temp").innerHTML = Math.floor(temp) + " K";
             document.getElementById("pic").setAttribute("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
 
-            
-
         });
 
 
-    //add catch
+    catch()
 }
 
 let view = 0;
