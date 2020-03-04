@@ -1,7 +1,7 @@
 let zip = document.getElementById("inputZip");
 
 document.getElementById("main wrapper").style.display = "none";
-document.getElementById("alert").style.display = "none";
+document.getElementById("pop").style.display = "none";
 
 let kelvin = 0;
 
@@ -17,11 +17,7 @@ function getAPI() {
         })
         .then((data) => {
 
-            // if (data.hasOwnProperty('cod')) {
-            //     alert(data.message)
-
-            // } else {
-            document.getElementById("alert").style.display = "none";
+            document.getElementById("pop").style.display = "none";
             document.getElementById("main wrapper").style.display = "block";
             document.getElementById("city").innerHTML = data.name;
             document.getElementById("condition").innerHTML = data.weather[0].main;
@@ -40,8 +36,8 @@ function getAPI() {
                 errMessage = JSON.parse(errMessage)
 
                 document.getElementById("main wrapper").style.display = "none";
-                document.getElementById("alert").style.display = "block";
-                document.getElementById("alert").innerHTML = "ERROR: " + errMessage.message;
+                document.getElementById("pop").style.display = "block";
+                document.getElementById("pop").innerHTML = "Uh-oh! " + errMessage.message;
             })
 
 
@@ -53,7 +49,8 @@ function change() {
 
     let far = (kelvin - 273.15) * (9 / 5) + 32;
     let celcius = (far - 32) * (5 / 9);
-    switch (view) {
+    console.log(view)
+    switch (view % 3) {
 
         case 1:
             document.getElementById("temp").innerHTML = Math.floor(celcius) + " C";
@@ -62,6 +59,10 @@ function change() {
         case 2:
             document.getElementById("temp").innerHTML = Math.floor(far) + " F";
             break;
+        default:
+            document.getElementById("temp").innerHTML = Math.floor(kelvin) + " K";
+            break;
+
     }
 }
 
