@@ -16,40 +16,29 @@
 
     <!-- <main class="container"> -->
 
-    <div class="container mt-3">
+    <div class="container mt-1">
         <div class="row">
-            <div class="col-md-4 col-sm-12 offset-4">
-                <div class="form-inline">
-                    <div class="form-group mb-2">
-                        <label for="inputZip" class="sr-only">Zip code</label>
-                        <input type="number" readonly class="form-control-plaintext" id="zip">
+            <div class="col-md-4 col-sm-12 offset-md-4 mt-5">
+                <div class="input-group mb-3">
+                    <input id="inputZip" type="text" class="form-control" placeholder="Enter Zip code">
+                    <div class="input-group-append">
+                        <button onclick="getAPI()" class="btn btn-primary" type="button">Get Weather</button>
                     </div>
-                    <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputZip" class="sr-only">Zip code</label>
-                        <input type="number" class="form-control" id="inputZip" placeholder="Enter Zip code">
-                    </div>
-                    <button onclick="getAPI()" class="d-block btn btn-primary mb-2">Get Weather</button>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div id="create" class="col-md-4 col-sm-12 offset-4 mt-3">
+            <div class="col-md-4 col-sm-12 offset-md-4 mt-3">
                 <div id="pop" class="alert alert-danger text-center" role="alert"></div>
-                <!-- <div id="pop" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-                    <span id="popMessage"></span>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div> -->
             </div>
         </div>
     </div>
 
 
     <div id="main wrapper">
-        <div class="container mt-3">
+        <div class="container mt-1">
             <div class="row">
-                <div class="col-md-4 offset-4">
+                <div class="col-md-4 offset-md-4 col-sm-12">
 
                     <div class="wrapper border-top border-right border-left border-primary bg-primary">
                         <div class="row mt-3">
@@ -68,12 +57,8 @@
 
                     <div class="wrapper border-top border-right border-left border-primary bg-primary mt-3">
                         <div class="row mt-3">
-                            <div class="col-4 offset-4">
-                                <h5 class="text-white">Temperature</h5>
-
-                            </div>
-                            <div class="col-4 text-left">
-                                <div onclick="nextView()"><i class="fas fa-thermometer-half pl-4 text-20"></i></div>
+                            <div class="col-md-4 offset-md-4 col-sm-12 text-center">
+                                <h5 onclick="nextView()" class="text-white">Temperature<i class="fas fa-angle-double-right"></i></h5>
                             </div>
                         </div>
                     </div>
@@ -87,14 +72,14 @@
 
                     <div class="wrapper border-top border-right border-left border-primary bg-primary mt-3">
                         <div class="row mt-3">
-                            <div class="col-12 text-center">
+                            <div class="col-md-4 offset-md-4 col-sm-12 text-center">
                                 <h5 class="text-white">Condition</h5>
                             </div>
                         </div>
                     </div>
                     <div class="wrapper border border-primary bg-white">
                         <div class="row">
-                            <div class="col-12 text-center">
+                            <div class="col-md-4 offset-md-4 col-sm-12 text-center">
                                 <h3 id="condition"></h3>
                             </div>
                         </div>
@@ -102,14 +87,14 @@
 
                     <div class="wrapper border-top border-right border-left border-primary bg-primary mt-3">
                         <div class="row mt-3">
-                            <div class="col-12 text-center">
+                            <div class="col-md-4 offset-md-4 col-sm-12 text-center">
                                 <h5 class="text-white">Season Display</h5>
                             </div>
                         </div>
                     </div>
                     <div class="wrapper border border-primary bg-white">
                         <div class="row">
-                            <div class="col-12 text-center">
+                            <div class="col-md-4 offset-md-4 col-sm-12 text-center">
                                 <img src="#" id="pic">
                             </div>
                         </div>
