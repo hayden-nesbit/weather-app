@@ -40,11 +40,12 @@ function getAPI() {
         error.text().then(errMessage => {
             //reads full string of error
             errMessage = JSON.parse(errMessage)
-                //returns parsed json error string with JS object
+                //returns parsed json error string as JS object
 
             document.getElementById("main wrapper").style.display = "none";
             document.getElementById("pop").style.display = "block";
             document.getElementById("pop").innerHTML = "Uh-oh! " + errMessage.message;
+            //gets "message" out of parsed json object
         })
     })
 }
