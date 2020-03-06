@@ -3,11 +3,7 @@ let zip = document.getElementById("inputZip");
 document.getElementById("main wrapper").style.display = "none";
 document.getElementById("pop").style.display = "none";
 
-function convert() {
-    let kelvin = data.main.temp;
-    let far = (kelvin - 273.15) * (9 / 5) + 32;
-    let celcius = (far - 32) * (5 / 9);
-}
+let kelvin = 0;
 
 function getAPI() {
 
@@ -24,8 +20,6 @@ function getAPI() {
         })
         .then((data) => {
 
-            convert()
-
             document.getElementById("pop").style.display = "none";
             document.getElementById("main wrapper").style.display = "block";
             document.getElementById("city").innerHTML = data.name;
@@ -33,7 +27,9 @@ function getAPI() {
             document.getElementById("pic").setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
             document.getElementById("temp").innerHTML = Math.floor(data.main.temp) + " K";
 
-
+            kelvin = data.main.temp;
+            let far = (kelvin - 273.15) * (9 / 5) + 32;
+            let celcius = (far - 32) * (5 / 9);
         })
 
     .catch((error) => {
@@ -54,7 +50,8 @@ let view = 0;
 
 function change() {
 
-    convert()
+    let far = (kelvin - 273.15) * (9 / 5) + 32;
+    let celcius = (far - 32) * (5 / 9);
 
     switch (view % 3) {
 
