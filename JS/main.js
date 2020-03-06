@@ -3,7 +3,11 @@ let zip = document.getElementById("inputZip");
 document.getElementById("main wrapper").style.display = "none";
 document.getElementById("pop").style.display = "none";
 
-let kelvin = 0;
+function convert() {
+    let kelvin = data.main.temp;
+    let far = (kelvin - 273.15) * (9 / 5) + 32;
+    let celcius = (far - 32) * (5 / 9);
+}
 
 function getAPI() {
 
@@ -11,11 +15,16 @@ function getAPI() {
         .then((response) => {
             if (!response.ok) {
                 throw response
+                    //this "throws"  the error to catch
             }
-            let result = response.json();
-            return result;
+
+            return response.json();
+            // this returns "response" as a javascript object
+
         })
         .then((data) => {
+
+            convert()
 
             document.getElementById("pop").style.display = "none";
             document.getElementById("main wrapper").style.display = "block";
@@ -24,30 +33,28 @@ function getAPI() {
             document.getElementById("pic").setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png");
             document.getElementById("temp").innerHTML = Math.floor(data.main.temp) + " K";
 
-            kelvin = data.main.temp;
-            let far = (kelvin - 273.15) * (9 / 5) + 32;
-            let celcius = (far - 32) * (5 / 9);
+
         })
 
-        //I have no idea how to explain this... Ian did it
-        .catch((error) => {
-            console.log(error)
-            error.text().then(errMessage => {
-                errMessage = JSON.parse(errMessage)
+    .catch((error) => {
+        error.text().then(errMessage => {
+            //reads full string of error
+            errMessage = JSON.parse(errMessage)
+                //returns parsed json error string with JS object
 
-                document.getElementById("main wrapper").style.display = "none";
-                document.getElementById("pop").style.display = "block";
-                document.getElementById("pop").innerHTML = "Uh-oh! " + errMessage.message;
-            })
+            document.getElementById("main wrapper").style.display = "none";
+            document.getElementById("pop").style.display = "block";
+            document.getElementById("pop").innerHTML = "Uh-oh! " + errMessage.message;
         })
+    })
 }
 
 let view = 0;
+
 function change() {
 
-    let far = (kelvin - 273.15) * (9 / 5) + 32;
-    let celcius = (far - 32) * (5 / 9);
-    console.log(view)
+    convert()
+
     switch (view % 3) {
 
         case 1:
@@ -68,4 +75,3 @@ function nextView() {
     view++;
     change();
 }
-
