@@ -34,7 +34,7 @@ function getAPI() {
 
     .catch((error) => {
         error.text().then(errMessage => {
-            //reads full string of error
+            //reads full string of error and gets text only
             errMessage = JSON.parse(errMessage)
                 //returns parsed json error string as JS object
 
